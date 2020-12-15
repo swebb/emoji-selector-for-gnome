@@ -4,7 +4,7 @@
   "description": "an emoji picker in a gnome-shell extension",
   "main": "index.js",
   "scripts": {
-    "gen-emojis": "echo \"Error: no test specified\" && exit 1"
+    "gen-emojis": "./gen-emojis.js"
   },
   "repository": {
     "type": "git",
