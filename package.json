@@ -1,0 +1,23 @@
+{
+  "name": "emoji-selector-for-gnome",
+  "version": "1.0.0",
+  "description": "an emoji picker in a gnome-shell extension",
+  "main": "index.js",
+  "scripts": {
+    "gen-emojis": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/maoschanz/emoji-selector-for-gnome.git"
+  },
+  "author": "",
+  "license": "GPLv3",
+  "bugs": {
+    "url": "https://github.com/maoschanz/emoji-selector-for-gnome/issues"
+  },
+  "homepage": "https://github.com/maoschanz/emoji-selector-for-gnome#readme",
+  "devDependencies": {
+    "emoji-datasource": "^6.0.0"
+  },
+  "dependencies": {}
+}
