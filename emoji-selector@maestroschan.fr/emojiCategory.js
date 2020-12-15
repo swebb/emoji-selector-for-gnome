@@ -11,23 +11,13 @@ const SkinTonesBar = Me.imports.emojiOptionsBar.SkinTonesBar;
 const Extension = Me.imports.extension;
 const EmojiButton = Me.imports.emojiButton;
 
-/**
- * This imports data (array of arrays of characters, and array of arrays
- * of strings). Keywords are used for both:
- * - search
- * - skin tone management
- * - gender management
- */
-const EMOJIS_CHARACTERS = Me.imports.data.emojisCharacters.ALL;
-const EMOJIS_KEYWORDS = Me.imports.data.emojisKeywords.ALL_KEYWORDS;
-
 var EmojiCategory = class EmojiCategory {
 
 	/**
 	 * The category and its button have to be built without being loaded, to
 	 * memory issues with emojis' image textures.
 	 */
-	constructor(categoryName, iconName, id) {
+	constructor(categoryName, iconName, skinToneSelectable, genderSelectable, id) {
 		this.super_item = new PopupMenu.PopupSubMenuMenuItem(categoryName);
 		this.categoryName = categoryName;
 		this.id = id;
@@ -40,14 +30,14 @@ var EmojiCategory = class EmojiCategory {
 
 		// These options bar widgets have the same type for all categories to
 		// simplify the update method
-		if ((this.id == 1) || (this.id == 5)) {
+		if (genderSelectable) {
 			this.skinTonesBar = new SkinTonesBar(true);
 		} else {
 			this.skinTonesBar = new SkinTonesBar(false);
 		}
 
 		//   Smileys & body   Peoples           Activities
-		if ((this.id == 0) || (this.id == 1) || (this.id == 5)) {
+		if (skinToneSelectable || genderSelectable) {
 			this.skinTonesBar.addBar(this.super_item.actor);
 		}
 
@@ -68,21 +58,6 @@ var EmojiCategory = class EmojiCategory {
 		this.categoryButton.connect('clicked', this._toggle.bind(this));
 
 		this._built = false; // will be true once the user opens the category
-		this._loaded = false; // will be true once loaded
-		this.validateKeywordsNumber();
-		this.load();
-	}
-
-	validateKeywordsNumber() {
-		if (EMOJIS_CHARACTERS[this.id].length === EMOJIS_KEYWORDS[this.id].length) {
-			return true;
-		}
-		let main_message = _("Incorrect number of keywords for category '%s':");
-		this._addErrorLine(main_message.replace('%s', this.categoryName));
-		this._addErrorLine(EMOJIS_CHARACTERS[this.id].length + " emojis");
-		this._addErrorLine(EMOJIS_KEYWORDS[this.id].length + " keyword groups");
-		this._addErrorLine(_("Please report this bug"));
-		return false;
 	}
 
 	_addErrorLine(error_message) {
@@ -97,21 +72,9 @@ var EmojiCategory = class EmojiCategory {
 		this.super_item.menu.addMenuItem(line);
 	}
 
-	/**
-	 * EmojiButtons objects are built here and loaded into an array, but not
-	 * packed into a container, thus not added to the Clutter stage and not
-	 * rendered. They will when the user will click on the button.
-	 */
-	load() {
-		if (this._loaded) return;
-
-		let ln, container;
-		for (let i = 0; i < EMOJIS_CHARACTERS[this.id].length; i++) {
-			let button = new EmojiButton.EmojiButton(
-			        EMOJIS_CHARACTERS[this.id][i], EMOJIS_KEYWORDS[this.id][i]);
-			this.emojiButtons.push(button);
-		}
-		this._loaded = true;
+	addEmoji(character, keywords) {
+		let button = new EmojiButton.EmojiButton(character, keywords);
+		this.emojiButtons.push(button);
 	}
 
 	clear() {
@@ -145,7 +108,7 @@ var EmojiCategory = class EmojiCategory {
 	}
 
 	_searchInName(searchedText, i) {
-		if (this.emojiButtons[i].keywords[0].includes(searchedText)) {
+		if (this.emojiButtons[i].keywords.includes(searchedText)) {
 			// If the name corresponds to the searched string, but it is also an
 			// exact match, we can assume the emoji is already in the displayed
 			// result.

@@ -49,10 +49,9 @@ const Convenience = Me.imports.convenience;
 const SkinTonesBar = Me.imports.emojiOptionsBar.SkinTonesBar;
 const EmojiCategory = Me.imports.emojiCategory.EmojiCategory;
 const EmojiButton = Me.imports.emojiButton;
+const emoji_data = Me.imports.data.emoji.ALL;
 
 //------------------------------------------------------------------------------
-
-var CAT_LABELS;
 
 const CAT_ICONS = [
 	'face-smile-symbolic', //'emoji-body-symbolic',
@@ -313,17 +312,100 @@ class EmojisMenu {
 		this.emojiCategories = [];
 
 		/* creating new categories, with emojis not loaded yet */
-		for (let i = 0; i < 9; i++) {
-			this.emojiCategories[i] = new EmojiCategory(CAT_LABELS[i], CAT_ICONS[i], i);
-		}
+		var cat_smileys_bodies = new EmojiCategory(_("Smileys & Body"), CAT_ICONS[0], true, false, 0);
+		var cat_peoples_clothing = new EmojiCategory(_("Peoples & Clothing"), CAT_ICONS[1], true, false, 1);
+		var cat_animals_nature = new EmojiCategory(_("Animals & Nature"), CAT_ICONS[2], false, false, 2);
+		var cat_food_drink = new EmojiCategory(_("Food & Drink"), CAT_ICONS[3], false, false, 3);
+		var cat_travel_places = new EmojiCategory(_("Travel & Places"), CAT_ICONS[4], false, false, 4);
+		var cat_activities_sports = new EmojiCategory(_("Activities & Sports"), CAT_ICONS[5], false, false, 5);
+		var cat_objects = new EmojiCategory(_("Objects"), CAT_ICONS[6], false, false, 6);
+		var cat_symbols = new EmojiCategory(_("Symbols"), CAT_ICONS[7], false, false, 7);
+		var cat_flags = new EmojiCategory(_("Flags"), CAT_ICONS[8], false, false, 8);
+		this.emojiCategories.push(cat_smileys_bodies);
+		this.emojiCategories.push(cat_peoples_clothing);
+		this.emojiCategories.push(cat_animals_nature);
+		this.emojiCategories.push(cat_food_drink);
+		this.emojiCategories.push(cat_travel_places);
+		this.emojiCategories.push(cat_activities_sports);
+		this.emojiCategories.push(cat_objects);
+		this.emojiCategories.push(cat_symbols);
+		this.emojiCategories.push(cat_flags);
+
+		emoji_data.forEach(emoji => {
+			var keywords = []
+			if (emoji.name !== null) {
+				keywords.push(emoji.name.toLowerCase())
+			}
+			if (emoji.short_name !== null) {
+				keywords.push(emoji.short_name.toLowerCase())
+			}
+			// if the emoji supports skin tone variations, pass that through to the button in the
+			// way the button expects.
+			if (emoji.skin_variations !== undefined) {
+				keywords.push("HAS_TONE")
+			}
+			// if the emoji is a newer {person,male,female}-zwj-{thing} style, we need to
+			// know so that skin tones can be applied correctly. The emoji datafile can
+			// give us a direct mapping to the skin tone variations, however using them
+			// will require more surgery on the codebase and I'm trying to minimise my footprint
+			// for now
+			if (emoji.unified.startsWith("1F9D1-200D") || emoji.unified.startsWith("1F468-200D") || emoji.unified.startsWith("1F469-200D")) {
+				keywords.push("IS_GENDERED")
+			}
+			keywords = keywords.concat(emoji.short_names)
+
+			if (keywords.length === 0) {
+				log("no keywords for emoji ", emoji)
+				return
+			}
+			var codepoints_str = emoji.unified.split("-")
+			var codepoints = codepoints_str.map(codepoint => {
+				return parseInt(Number("0x" + codepoint), 10)
+			});
+			var emojiStr = codepoints.map(codepoint => {
+				return String.fromCodePoint(codepoint)
+			}).join("");
+
+			switch(emoji.category) {
+				case "Smileys & Emotion":
+					cat_smileys_bodies.addEmoji(emojiStr, keywords)
+					break;
+				case "People & Body":
+					cat_peoples_clothing.addEmoji(emojiStr, keywords)
+					break;
+				case "Animals & Nature":
+					cat_animals_nature.addEmoji(emojiStr, keywords)
+					break;
+				case "Food & Drink":
+					cat_food_drink.addEmoji(emojiStr, keywords)
+					break;
+				case "Travel & Places":
+					cat_travel_places.addEmoji(emojiStr, keywords)
+					break;
+				case "Activities":
+					cat_activities_sports.addEmoji(emojiStr, keywords)
+					break;
+				case "Objects":
+					cat_objects.addEmoji(emojiStr, keywords)
+					break;
+				case "Symbols":
+					cat_symbols.addEmoji(emojiStr, keywords)
+					break;
+				case "Flags":
+					cat_flags.addEmoji(emojiStr, keywords)
+					break;
+				default:
+					log("unrecognised emoji category:", emoji.category)
+			}
+		});
 	}
 
 	// Adds all submenu-menuitems to the extension interface. These items are
 	// hidden, and will be visible only when the related category is opened.
 	_addAllCategories() {
-		for (let i = 0; i < 9; i++) {
-			this.super_btn.menu.addMenuItem(this.emojiCategories[i].super_item);
-		}
+		this.emojiCategories.forEach(cat=> {
+			this.super_btn.menu.addMenuItem(cat.super_item);
+		});
 	}
 
 	// Adds categories' buttons to the extension interface
@@ -342,9 +424,9 @@ class EmojisMenu {
 	// outside, be careful.
 	clearCategories(){
 		// removing the style class of previously opened category's button
-		for (let i = 0; i< 9; i++) {
-			this.emojiCategories[i].getButton().set_checked(false);
-		}
+		this.emojiCategories.forEach(cat=> {
+			cat.getButton().set_checked(false);
+		});
 
 		let items = this.super_btn.menu._getMenuItems();
 
@@ -434,20 +516,6 @@ function enable() {
 	 * nbcols (int), rebuild nécessaire
 	 * position (chaîne) impossible tout court ?
 	*/
-
-	// This variable is assigned here because init() wouldn't have provided
-	// gettext yet if it was done at the top level of the file.
-	CAT_LABELS = [
-		_("Smileys & Body"),
-		_("Peoples & Clothing"),
-		_("Animals & Nature"),
-		_("Food & Drink"),
-		_("Travel & Places"),
-		_("Activities & Sports"),
-		_("Objects"),
-		_("Symbols"),
-		_("Flags")
-	];
 
 	GLOBAL_BUTTON = new EmojisMenu();
 
