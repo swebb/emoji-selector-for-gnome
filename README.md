@@ -31,6 +31,23 @@ all concerning memory management, and the extension may be responsible for
 between 10MB and 60MB of memory usage, which is a lot. Don't blame the actual GS
 devs for it.
 
+## About data
+
+The emoji data used to construct the widget is sourced from the Unicode
+Consortium, via the emoji-datasource npm package.
+
+From time to time it may be desirable to re-generate the data file, for example when
+new official emoji's are released. To do so:
+
+1. Update the emoji-datasource package
+
+    npm update emoji-datasource
+
+2. Regenerate the data and commit it
+
+    npm run gen-emojis
+    git commit emoji-selector@maestroschan.fr/data/emoji.js -m "updated emoji data"
+
 ## Contributors & translations
 
 Various contributions to the code itself:
