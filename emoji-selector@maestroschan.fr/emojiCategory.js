@@ -118,7 +118,7 @@ var EmojiCategory = class EmojiCategory {
 	}
 
 	_searchInKeywords(searchedText, i) {
-		for (let k = 1; k < this.emojiButtons[i].keywords.length; k++) {
+		for (let k = 0; k < this.emojiButtons[i].keywords.length; k++) {
 			if (this.emojiButtons[i].keywords[k].includes(searchedText)) {
 				// If a keyword corresponds to the searched string, but the name
 				// corresponds too, we can assume the emoji is already in the
