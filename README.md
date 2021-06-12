@@ -48,6 +48,13 @@ new official emoji's are released. To do so:
     npm run gen-emojis
     git commit emoji-selector@maestroschan.fr/data/emoji.js -m "updated emoji data"
 
+## Development
+
+While working on changes, it can be helpful to boot a nested gnome shell
+session to check the results without restarting the main gnome shell session.
+
+    dbus-run-session -- gnome-shell --nested --wayland
+
 ## Contributors & translations
 
 Various contributions to the code itself:
