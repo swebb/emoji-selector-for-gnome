@@ -62,7 +62,9 @@ const CAT_ICONS = [
 	'emoji-activities-symbolic',
 	'emoji-objects-symbolic',
 	'emoji-symbols-symbolic',
-	'emoji-flags-symbolic'
+	'emoji-flags-symbolic',
+	'1',
+	'℃'
 ];
 
 var SETTINGS;
@@ -321,6 +323,8 @@ class EmojisMenu {
 		var cat_objects = new EmojiCategory(_("Objects"), CAT_ICONS[6], false, false, 6);
 		var cat_symbols = new EmojiCategory(_("Symbols"), CAT_ICONS[7], false, false, 7);
 		var cat_flags = new EmojiCategory(_("Flags"), CAT_ICONS[8], false, false, 8);
+		var cat_unicode_numbers = new EmojiCategory(_("Unicode Numbers"), CAT_ICONS[9], false, false, 8);
+		var cat_unicode_symbols = new EmojiCategory(_("Unicode Symbols"), CAT_ICONS[10], false, false, 8);
 		this.emojiCategories.push(cat_smileys_bodies);
 		this.emojiCategories.push(cat_peoples_clothing);
 		this.emojiCategories.push(cat_animals_nature);
@@ -330,6 +334,8 @@ class EmojisMenu {
 		this.emojiCategories.push(cat_objects);
 		this.emojiCategories.push(cat_symbols);
 		this.emojiCategories.push(cat_flags);
+		this.emojiCategories.push(cat_unicode_numbers);
+		this.emojiCategories.push(cat_unicode_symbols);
 
 		emoji_data.forEach(emoji => {
 			var keywords = []
@@ -393,6 +399,13 @@ class EmojisMenu {
 					break;
 				case "Flags":
 					cat_flags.addEmoji(emojiStr, keywords)
+					break;
+				case "Unicode Numbers":
+					cat_unicode_numbers.addEmoji(emojiStr, keywords)
+					break;
+
+				case "Unicode Symbols":
+					cat_unicode_symbols.addEmoji(emojiStr, keywords)
 					break;
 				default:
 					log("unrecognised emoji category:", emoji.category)

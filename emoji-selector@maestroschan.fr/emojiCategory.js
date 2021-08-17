@@ -41,6 +41,17 @@ var EmojiCategory = class EmojiCategory {
 			this.skinTonesBar.addBar(this.super_item.actor);
 		}
 
+		var child;
+		if (iconName.startsWith("emoji-") || iconName.startsWith("face-")) {
+		  child = new St.Icon({
+		    icon_name: iconName,
+		    icon_size: 16
+		  })
+		} else {
+		  child = new St.Label({
+		    text: iconName
+		  })
+		}
 		this.categoryButton = new St.Button({
 			reactive: true,
 			can_focus: true,
@@ -48,10 +59,7 @@ var EmojiCategory = class EmojiCategory {
 			toggle_mode: true,
 			accessible_name: categoryName,
 			style_class: 'EmojisCategory',
-			child: new St.Icon({
-				icon_name: iconName,
-				icon_size: 16
-			}),
+			child: child,
 			x_expand: true,
 			x_align: Clutter.ActorAlign.CENTER,
 		});

@@ -22330,5 +22330,293 @@ var ALL = [
     "non_qualified": null,
     "category": "Flags",
     "sort_order": 1817
+  },
+  {
+    "name": "½",
+    "short_name": "VULGAR FRACTION ONE HALF",
+    "short_names": [],
+    "unified": "BD",
+    "non_qualified": null,
+    "category": "Unicode Numbers",
+    "sort_order": 1
+  },
+  {
+    "name": "¼",
+    "short_name": "VULGAR FRACTION ONE QUARTER",
+    "short_names": [],
+    "unified": "BC",
+    "non_qualified": null,
+    "category": "Unicode Numbers",
+    "sort_order": 2
+  },
+  {
+    "name": "¾",
+    "short_name": "VULGAR FRACTION THREE QUARTERS",
+    "short_names": [],
+    "unified": "BE",
+    "non_qualified": null,
+    "category": "Unicode Numbers",
+    "sort_order": 3
+  },
+  {
+    "name": "⅐",
+    "short_name": "VULGAR FRACTION ONE SEVENTH",
+    "short_names": [],
+    "unified": "2150",
+    "non_qualified": null,
+    "category": "Unicode Numbers",
+    "sort_order": 3
+  },
+  {
+    "name": "⅑",
+    "short_name": "VULGAR FRACTION ONE NINTH",
+    "short_names": [],
+    "unified": "2151",
+    "non_qualified": null,
+    "category": "Unicode Numbers",
+    "sort_order": 5
+  },
+  {
+    "name": "⅒",
+    "short_name": "VULGAR FRACTION ONE TENTH",
+    "short_names": [],
+    "unified": "2152",
+    "non_qualified": null,
+    "category": "Unicode Numbers",
+    "sort_order": 6
+  },
+  {
+    "name": "⅓",
+    "short_name": "VULGAR FRACTION ONE THIRD",
+    "short_names": [],
+    "unified": "2153",
+    "non_qualified": null,
+    "category": "Unicode Numbers",
+    "sort_order": 7
+  },
+  {
+    "name": "⅔",
+    "short_name": "VULGAR FRACTION TWO THIRDS",
+    "short_names": [],
+    "unified": "2154",
+    "non_qualified": null,
+    "category": "Unicode Numbers",
+    "sort_order": 8
+  },
+  {
+    "name": "⅕",
+    "short_name": "VULGAR FRACTION ONE FIFTH",
+    "short_names": [],
+    "unified": "2155",
+    "non_qualified": null,
+    "category": "Unicode Numbers",
+    "sort_order": 10
+  },
+  {
+    "name": "⅖",
+    "short_name": "VULGAR FRACTION TWO FIFTHS",
+    "short_names": [],
+    "unified": "2156",
+    "non_qualified": null,
+    "category": "Unicode Numbers",
+    "sort_order": 11
+  },
+  {
+    "name": "⅗",
+    "short_name": "VULGAR FRACTION THREE FIFTHS",
+    "short_names": [],
+    "unified": "2157",
+    "non_qualified": null,
+    "category": "Unicode Numbers",
+    "sort_order": 12
+  },
+  {
+    "name": "⅘",
+    "short_name": "VULGAR FRACTION FOUR FIFTHS",
+    "short_names": [],
+    "unified": "2158",
+    "non_qualified": null,
+    "category": "Unicode Numbers",
+    "sort_order": 13
+  },
+  {
+    "name": "⅙",
+    "short_name": "VULGAR FRACTION ONE SIXTH",
+    "short_names": [],
+    "unified": "2159",
+    "non_qualified": null,
+    "category": "Unicode Numbers",
+    "sort_order": 14
+  },
+  {
+    "name": "⅚",
+    "short_name": "VULGAR FRACTION FIVE SIXTHS",
+    "short_names": [],
+    "unified": "215A",
+    "non_qualified": null,
+    "category": "Unicode Numbers",
+    "sort_order": 15
+  },
+  {
+    "name": "⅛",
+    "short_name": "VULGAR FRACTION ONE EIGHTH",
+    "short_names": [],
+    "unified": "215B",
+    "non_qualified": null,
+    "category": "Unicode Numbers",
+    "sort_order": 16
+  },
+  {
+    "name": "⅜",
+    "short_name": "VULGAR FRACTION THREE EIGHTHS",
+    "short_names": [],
+    "unified": "215C",
+    "non_qualified": null,
+    "category": "Unicode Numbers",
+    "sort_order": 17
+  },
+  {
+    "name": "⅝",
+    "short_name": "VULGAR FRACTION FIVE EIGHTHS",
+    "short_names": [],
+    "unified": "215D",
+    "non_qualified": null,
+    "category": "Unicode Numbers",
+    "sort_order": 18
+  },
+  {
+    "name": "⅞",
+    "short_name": "VULGAR FRACTION SEVEN EIGHTHS",
+    "short_names": [],
+    "unified": "215E",
+    "non_qualified": null,
+    "category": "Unicode Numbers",
+    "sort_order": 19
+  },
+  {
+    "name": "⅟",
+    "short_name": "FRACTION NUMERATOR ONE",
+    "short_names": [],
+    "unified": "215F",
+    "non_qualified": null,
+    "category": "Unicode Numbers",
+    "sort_order": 19
+  },
+  {
+    "name": "⁰",
+    "short_name": "SUPERSCRIPT ZERO",
+    "short_names": [],
+    "unified": "2070",
+    "non_qualified": null,
+    "category": "Unicode Numbers",
+    "sort_order": 20
+  },
+  {
+    "name": "¹",
+    "short_name": "SUPERSCRIPT ONE",
+    "short_names": [],
+    "unified": "B9",
+    "non_qualified": null,
+    "category": "Unicode Numbers",
+    "sort_order": 21
+  },
+  {
+    "name": "²",
+    "short_name": "SUPERSCRIPT TWO",
+    "short_names": [],
+    "unified": "B2",
+    "non_qualified": null,
+    "category": "Unicode Numbers",
+    "sort_order": 22
+  },
+  {
+    "name": "³",
+    "short_name": "SUPERSCRIPT THREE",
+    "short_names": [],
+    "unified": "B3",
+    "non_qualified": null,
+    "category": "Unicode Numbers",
+    "sort_order": 23
+  },
+  {
+    "name": "⁴",
+    "short_name": "SUPERSCRIPT FOUR",
+    "short_names": [],
+    "unified": "2074",
+    "non_qualified": null,
+    "category": "Unicode Numbers",
+    "sort_order": 24
+  },
+  {
+    "name": "⁵",
+    "short_name": "SUPERSCRIPT FIVE",
+    "short_names": [],
+    "unified": "2075",
+    "non_qualified": null,
+    "category": "Unicode Numbers",
+    "sort_order": 25
+  },
+  {
+    "name": "⁶",
+    "short_name": "SUPERSCRIPT SIX",
+    "short_names": [],
+    "unified": "2076",
+    "non_qualified": null,
+    "category": "Unicode Numbers",
+    "sort_order": 26
+  },
+  {
+    "name": "⁷",
+    "short_name": "SUPERSCRIPT SEVEN",
+    "short_names": [],
+    "unified": "2077",
+    "non_qualified": null,
+    "category": "Unicode Numbers",
+    "sort_order": 27
+  },
+  {
+    "name": "⁸",
+    "short_name": "SUPERSCRIPT EIGHT",
+    "short_names": [],
+    "unified": "2078",
+    "non_qualified": null,
+    "category": "Unicode Numbers",
+    "sort_order": 28
+  },
+  {
+    "name": "⁹",
+    "short_name": "SUPERSCRIPT NINE",
+    "short_names": [],
+    "unified": "2079",
+    "non_qualified": null,
+    "category": "Unicode Numbers",
+    "sort_order": 29
+  },
+  {
+    "name": "℃",
+    "short_name": "DEGREE CELSIUS",
+    "short_names": [],
+    "unified": "2103",
+    "non_qualified": null,
+    "category": "Unicode Symbols",
+    "sort_order": 1
+  },
+  {
+    "name": "℉",
+    "short_name": "DEGREE FAHRENHEIT",
+    "short_names": [],
+    "unified": "2109",
+    "non_qualified": null,
+    "category": "Unicode Symbols",
+    "sort_order": 2
+  },
+  {
+    "name": "™",
+    "short_name": "TRADE MARK SIGN",
+    "short_names": [],
+    "unified": "2122",
+    "non_qualified": null,
+    "category": "Unicode Symbols",
+    "sort_order": 3
   }
 ]
