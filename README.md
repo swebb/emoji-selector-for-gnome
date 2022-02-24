@@ -55,6 +55,16 @@ session to check the results without restarting the main gnome shell session.
 
     dbus-run-session -- gnome-shell --nested --wayland
 
+To load the extension from a git checkout instead of a package:
+
+    git clone https://github.com/yob/emoji-selector-for-gnome.git
+    cd emoji-selector-for-gnome
+    git checkout single-emoji-data-file
+    ln -s ~/.local/share/gnome-shell/extensions/emoji-selector@maestroschan.fr <path to git clone>
+
+.. and then restart your gnome-shell session, or to test without restarting you can use
+the dbus-run-session trick above.
+
 ## Contributors & translations
 
 Various contributions to the code itself:
